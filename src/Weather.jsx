@@ -29,6 +29,11 @@ export default function Weather() {
         }
     }, [query]);
 
+    let d = new Date().getDate()
+
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let w = daysOfWeek[weather.current.is_day]
+
     return (
         <div className="h-screen flex justify-center bg-white">
             <div className="flex flex-col justify-center">
@@ -49,6 +54,7 @@ export default function Weather() {
                     {/* Conditional rendering of weather data */}
                     {weather && weather.location && weather.current ? (
                         <div className="text-4xl font-medium pt-2 w-full">
+                            <h3>{d}, {w}</h3>
                             <h2>{weather.location.name},{weather.location.country}</h2>  {/* Display the city name */}
                             <p>Temperature: {weather.current.temp_c}°C</p>  {/* Display temperature */}
                             <p>Condition: {weather.current.condition.text}</p>  {/* Display weather condition */}
